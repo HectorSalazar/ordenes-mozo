@@ -1,0 +1,22 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Platos</h1>
+<div class="p-10">
+  <%= link_to "Nuevo plato", new_plate_path, class: "btn btn-success" %>
+</div>
+
+<div id="plates" style="display: flex;">
+  <% @plates.each do |plate| %>
+      <div class="col-md-2 p-10"> 
+        <div class="boximgcustom">
+        <div class="card text-center">
+            <%= render plate %>
+            <p>
+              <%= link_to "Ver este plato", plate, class: "btn btn-primary" %>
+            </p>
+        </div>
+        </div>       
+      </div>
+  <% end %>
+</div>
+

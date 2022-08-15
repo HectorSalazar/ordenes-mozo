@@ -1,0 +1,35 @@
+<%= form_with(model: petition) do |form| %>
+  <% if petition.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(petition.errors.count, "error") %> prohibited this petition from being saved:</h2>
+
+      <ul>
+        <% petition.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="card text-center p-10 col-md-2 offset-md-5">
+    <div>
+      <%= form.label "Plato", style: "display: block; text-align: left;" %>
+      <%= form.collection_select(:plate,Plate.all,:id,:name, {}, {:style=>'display: block; width: 100%;'}) %>
+    </div>
+
+    <div>
+      <%= form.label "Mesa", style: "display: block; text-align: left;" %>
+      <%= form.collection_select(:diningtable,Diningtable.all,:id,:position, {}, {:style=>'display: block; width: 100%;'}) %>
+    </div>
+
+    <div>
+      <%= form.label "Mesero", style: "display: block; text-align: left;" %>
+      <%= form.collection_select(:waiter,Waiter.all,:id,:name, {}, {:style=>'display: block; width: 100%;'}) %>
+    </div>
+
+    <div class="p-10">
+      <%= form.submit "Grabar", class: "btn btn-primary" %>
+    </div>
+  </div>
+
+<% end %>

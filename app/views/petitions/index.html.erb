@@ -1,0 +1,21 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Órdenes</h1>
+<div class="p-10">
+  <%= link_to "Nueva orden", new_petition_path, class: "btn btn-success" %>
+</div>
+
+<div id="petitions" style="display: flex;">
+  <% @petitions.each do |petition| %>
+      <div class="col-md-2 p-10"> 
+        <div class="boximgcustom">
+        <div class="card text-center">
+            <%= render plate %>
+            <p>
+              <%= link_to "Ver órden", petition, class: "btn btn-primary" %>
+            </p>
+        </div>
+        </div>       
+      </div>
+  <% end %>
+</div>

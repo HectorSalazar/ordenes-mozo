@@ -1,0 +1,34 @@
+<%= form_with(model: plate) do |form| %>
+  <% if plate.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(plate.errors.count, "error") %> prohibited this plate from being saved:</h2>
+
+      <ul>
+        <% plate.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="card text-center p-10 col-md-2 offset-md-5">
+    <div>
+      <%= form.label "Nombre", style: "display: block; text-align: left;" %>
+      <%= form.text_field :name, style: "display: block; text-align: left;" %>
+    </div>
+
+    <div>
+      <%= form.label "Descripción", style: "display: block; text-align: left;" %>
+      <%= form.text_field :description, style: "display: block; text-align: left;" %>
+    </div>
+
+    <div>
+      <%= form.label "Precio", style: "display: block; text-align: left;" %>
+      <%= form.number_field :amount, step: 0.5, style: "display: block; text-align: left;" %>
+    </div>
+
+    <div class="p-10">
+      <%= form.submit "Grabar", class: "btn btn-primary" %>
+    </div>
+  </div>
+<% end %>

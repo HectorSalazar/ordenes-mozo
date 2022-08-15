@@ -1,0 +1,24 @@
+<h1>Salón 1</h1>
+
+<div class="custom-center">
+    <div class="p-10 d-flex" style="overflow: auto;">
+        <% for i in (1..@columns) %>  
+            <div>    
+                <% for j in (1..@rows) %>
+                    <% if @diningtables.where(position: (i + @columns*(j-1))).count > 0 %>
+                        <div class=<%= (@diningtables.where(position: (i + @columns*(j-1))).first.state == 1) ? 'mesa-active' : '' %>>
+                            <div class="box">
+                                <%= link_to show_path((i + @columns*(j-1))), remote: true, :action => 'go' do %>                                
+                                    <%= image_tag("mesa.png", alt: 'Logo', class: 'mesa')%>                                
+                                <% end %>
+                            </div>
+                        </div>
+                    <% else %>
+                        <div class="box">
+                        </div>
+                    <% end %>
+                <% end %>
+            </div>
+        <% end %>
+    </div>
+</div>
